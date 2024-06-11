@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\HomeController;
 Use App\Http\Controllers\AdminController;
 Use App\Http\Controllers\BarangController;
+Use App\Http\Controllers\DataController;
 
 Route::get('/beranda', function () {
     return view('beranda');
@@ -31,10 +32,16 @@ Route::get('/beranda', function () {
 });
 
 Route::get('/admin/Dashboard', [AdminController::class, 'Dashboard']);
-Route::get('/admin/DataAdmin', [AdminController::class, 'DataAdmin']);
+Route::get('/admin/Data', [AdminController::class, 'Data']);
 Route::get('/admin/DataCustomer', [AdminController::class, 'DataCustomer']);
 Route::get('/admin/Barang', [BarangController::class, 'Barang'])->name('barang.index');
 Route::post('/admin/Barang', [BarangController::class, 'create'])->name('barang.create');
 Route::patch('/admin/barang/{id}/edit', [BarangController::class,'update'])->name('barang.update');
 Route::delete('/admin/barang/{id}', [BarangController::class, 'delete'])->name('barang.delete');   
 Route::get('/admin/Komentar', [AdminController::class, 'Komentar']);
+
+
+
+
+Route::get('/admin/Data', [DataController::class, 'Data'])->name('data.index');
+Route::post('/admin/Data', [DataController::class, 'create'])->name('data.create');
