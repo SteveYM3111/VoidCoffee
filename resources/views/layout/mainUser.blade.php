@@ -12,20 +12,19 @@
 </head>
 
 <body>
-    <nav class="bg-gray-800">
+    <nav class="bg-transparent">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex flex-shrink-0 items-center">
-                        <img class="h-16 w-16" src="/image/Logo.png" alt="Your Company">
+                        <img class="h-8 w-8" src="/image/biji.png" alt="Your Company">
                     </div>
-                    <div class="hidden sm:ml-6 sm:block">
-                        <div class="flex space-x-4 mt-4">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="/newberanda" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
-                            <a href="/kontak" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">About Us</a>
-                            <a href="/lokasi" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">Location</a>
-                            <a href="/produk" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">Products</a>
+                    <div class="hidden sm:ml-96 sm:block -translate-x-8">
+                        <div class="flex space-x-12 mt-4">
+                            <a href="/newberanda" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">Home</a>
+                            <a href="/newkontak" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">About Us</a>
+                            <a href="/newlokasi" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">Location</a>
+                            <a href="/newproduk" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">Products</a>
                         </div>
                     </div>
                 </div>
@@ -52,9 +51,8 @@
                                 </div>
                             </div>
                             <ul class="menu menu-sm p-2">
-                                <li><a class="text-white">Profile</a></li>
-                                <li><a class="text-white">Settings</a></li>
-                                <li><a class="text-white">Logout</a></li>
+                                <li class="mx-auto"><a href="/akun" class="text-whit e">Profile</a></li>
+                                <li class="mx-auto"><a href="/login" class="text-white">Logout</a></li>
                             </ul>
                         </div>
                     </div>

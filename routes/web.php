@@ -33,6 +33,21 @@ Route::get('/beranda', function () {
     Route::get('/newberanda', function () {
         return view('newberanda');
 });
+Route::get('/newkontak', function () {
+    return view('newkontak');
+});
+Route::get('/newlokasi', function () {
+    return view('newlokasi');
+});
+Route::get('/newproduk', function () {
+    return view('newproduk');
+});
+Route::get('/akun', function () {
+    return view('akun');
+});
+Route::get('/descproduk', function () {
+    return view('descproduk');
+});
 
 Route::get('/admin/Dashboard', [AdminController::class, 'Dashboard']);
 Route::get('/admin/Data', [AdminController::class, 'Data']);

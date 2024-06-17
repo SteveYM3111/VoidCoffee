@@ -4,27 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .card {
-      margin-right: 2rem;
-    }
-    .coffee-image {
-      background: linear-gradient(0deg, #4FD1C5 100%, #286B65 100%);
-      padding: 2rem;
-    }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="container">
-    <div class="card lg:card-side bg-white shadow-xl w-3/12 h-6/12"> <!-- Changed bg-base-100 to bg-white -->
+<body class="flex items-center justify-center min-h-screen bg-black-100 ">
+  <div class="flex space-x-8">
+    <div class="card lg:card-side bg-white shadow-xl w-3/12 h-6/12">
       <div class="card-body">
         <label class="form-control w-full max-w-xs h-120">
           <p class="text-xl justify-end">Welcome Back Admin!</p>
@@ -48,7 +33,7 @@
         </div>
       </div>
     </div>
-    <div class="coffee-image">
+    <div class="flex items-center justify-center bg-gradient-to-b from-teal-400 to-teal-700 p-8">
       <figure>
         <img src="{{ asset('image/Coffee.svg') }}" alt="Coffee"/>
       </figure>

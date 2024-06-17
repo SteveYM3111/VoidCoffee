@@ -48,4 +48,24 @@ class HomeController extends Controller
     {
     return view('newberanda');
     }
+    public function newkontak()
+    {
+    return view('newkontak');
+    }
+    public function newlokasi()
+    {
+    return view('newlokasi');
+    }
+    public function newproduk()
+    {
+    return view('newproduk');
+    }
+    public function akun()
+    {
+    return view('akun');
+    }
+    public function descproduk()
+    {
+    return view('descproduk');
+    }
 } 
