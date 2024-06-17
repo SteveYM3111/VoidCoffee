@@ -45,3 +45,5 @@ Route::get('/admin/Komentar', [AdminController::class, 'Komentar']);
 
 Route::get('/admin/Data', [DataController::class, 'Data'])->name('data.index');
 Route::post('/admin/Data', [DataController::class, 'create'])->name('data.create');
+Route::patch('/admin/data/{id}/edit', [DataController::class,'update'])->name('data.update');
+Route::delete('/admin/data/{id}', [DataController::class, 'delete'])->name('data.delete');  

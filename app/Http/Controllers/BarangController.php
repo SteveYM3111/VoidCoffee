@@ -41,28 +41,35 @@ public function delete ($id){
     }
     }
 
-    public function update(Request $request,$id){
-
+    public function update(Request $request, $id)
+    {
         $Barang = Barang::findOrFail($id);
-
+    
         $validate = $request->validate([
-        'name' => 'required',
-        'qty' => 'required',
-        'price' => 'required',
-        'description' => 'required',
-        'status' => 'required',
-        'picture' => 'nullable|mimes:jpg,jpeg,png|max:2048',
+            'name' => 'required',
+            'qty' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'picture' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
-
-        $format_file = $request->file('picture')->getClientOriginalName();
-        $request->file('picture')->move(public_path('pictures'), $format_file);
-   
-        $status = $Barang->update($validate);
-        if ($status) {
-            return redirect()->back();
+    
+        // If a new picture is uploaded
+        if ($request->hasFile('picture')) {
+            $format_file = $request->file('picture')->getClientOriginalName();
+            $request->file('picture')->move(public_path('pictures'), $format_file);
+            $validate['picture'] = 'pictures/' . $format_file;
         } else {
-            return redirect()->back();
+            // If no new picture is uploaded, keep the old picture
+            unset($validate['picture']);
         }
-
-   }
+    
+        $status = $Barang->update($validate);
+    
+        if ($status) {
+            return redirect()->back()->with('success', 'Barang berhasil diperbarui.');
+        } else {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui barang.');
+        }
+    }
 }

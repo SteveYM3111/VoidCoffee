@@ -13,13 +13,13 @@
     <p class="py-4">Press ESC key or click the button below to close</p>
     <form action="{{ route('barang.create') }}" method="post" enctype="multipart/form-data">
         @csrf
-    <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xs mb-5" name="name" />
-    <input type="text" placeholder="Qty" class="input input-bordered w-full max-w-xs mb-5" name="qty"/>
-    <input type="text" placeholder="Price" class="input input-bordered w-full max-w-xs mb-5" name="price"/>
-    <input type="text" placeholder="deskripsi" class="input input-bordered w-full max-w-xs mb-5" name="description" />
-    <input type="text" placeholder="status" class="input input-bordered w-full max-w-xs mb-5" name="status" />   
-    <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-5" name="picture"/>
-    <button type="submit" class="btn btn-primary">Submit</button>
+        <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xs mb-5" name="name" />
+        <input type="text" placeholder="Qty" class="input input-bordered w-full max-w-xs mb-5" name="qty"/>
+        <input type="text" placeholder="Price" class="input input-bordered w-full max-w-xs mb-5" name="price"/>
+        <input type="text" placeholder="deskripsi" class="input input-bordered w-full max-w-xs mb-5" name="description" />
+        <input type="text" placeholder="status" class="input input-bordered w-full max-w-xs mb-5" name="status" />   
+        <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-5" name="picture"/>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     
   </div>

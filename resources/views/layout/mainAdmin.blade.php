@@ -33,7 +33,7 @@
                 <li><a href="/admin/Komentar"><i class="fa-solid fa-comment mr-2"></i>Komentar</a></li>
             </ul>
             
-            <div class="justify-center translate-y-96 ml-24">
+            <div class="justify-center translate-y-64 ml-24">
                 <div class="flex-none">
                     <div class="dropdown dropdown-top">
                         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
