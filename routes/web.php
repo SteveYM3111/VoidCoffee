@@ -30,6 +30,9 @@ Route::get('/beranda', function () {
     Route::get('/pembayaran', function (){
         return view('pembayaran');
 });
+    Route::get('/newberanda', function () {
+        return view('newberanda');
+});
 
 Route::get('/admin/Dashboard', [AdminController::class, 'Dashboard']);
 Route::get('/admin/Data', [AdminController::class, 'Data']);

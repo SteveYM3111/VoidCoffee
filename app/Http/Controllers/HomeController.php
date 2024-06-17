@@ -24,21 +24,28 @@ class HomeController extends Controller
     {
     return view('galeri');
     }
-   public function produk()
+    public function produk()
     {
     return view('produk');
     }
     public function lokasi()
     {
-        return view('lokasi');
+    return view('lokasi');
     }
-    public function login(){
-        return view('login');
+    public function login()
+    {
+    return view('login');
     }
-    public function register(){
-        return view('register');
-        }
-    public function pembayaran(){
-        return view('pembayaran');
+    public function register()
+    {
+    return view('register');
+    }
+    public function pembayaran()
+    {
+    return view('pembayaran');
+    }
+    public function newberanda()
+    {
+    return view('newberanda');
     }
 } 
