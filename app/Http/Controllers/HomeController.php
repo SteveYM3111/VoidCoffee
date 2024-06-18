@@ -32,10 +32,6 @@ class HomeController extends Controller
     {
     return view('lokasi');
     }
-    public function login()
-    {
-    return view('login');
-    }
     public function register()
     {
     return view('register');
