@@ -15,7 +15,8 @@ class SesiController extends Controller
         $request->validate([
             'email'=>'required',
             'password'=>'required'
-        ],[
+        ],
+        [
             'email.required'=>'Email wajib di isi',
             'password.required'=>'Password wajib di isi'
         ]);

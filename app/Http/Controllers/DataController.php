@@ -22,10 +22,11 @@ class DataController extends Controller
     Data::create([
         'name' => $request->name,
         'email' => $request->email,
+        'password' => $request->password,
         'phone' => $request->phone,
-        'description' => $request->description,
-        'status' => $request->status,
+        'role' => $request->role,
         'picture' => 'pictures/'.$format_file,
+        
     ]);
     return redirect()->back();
 }
@@ -47,10 +48,10 @@ public function delete ($id){
     
         $validate = $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
             'phone' => 'required',
-            'description' => 'required',
-            'status' => 'required',
+            'role' => 'required',
             'picture' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
     
@@ -64,6 +65,11 @@ public function delete ($id){
             unset($validate['picture']);
         }
     
+        // Hash the password before saving if it has changed
+        if ($request->input('password') !== $Data->password) {
+            $validate['password'] = bcrypt($request->input('password'));
+        }
+    
         $status = $Data->update($validate);
     
         if ($status) {
@@ -72,5 +78,6 @@ public function delete ($id){
             return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui barang.');
         }
     }
+    
 }
 

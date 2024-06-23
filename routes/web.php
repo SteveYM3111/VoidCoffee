@@ -6,6 +6,7 @@ Use App\Http\Controllers\AdminController;
 Use App\Http\Controllers\BarangController;
 Use App\Http\Controllers\DataController;
 Use App\Http\Controllers\SesiController;
+use App\Http\Controllers\RegisterController;
 
 Route::get('/beranda', function () {
     return view('beranda');
@@ -50,7 +51,11 @@ Route::get('/login', function (){
     return view('login');
 });
 
-Route::post('/login',[SesiController::class,'login']);
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register'])->name('register.user');
+Route::get('login', [SesiController::class, 'index'])->name('login');
+Route::post('login', [SesiController::class, 'login']);
+Route::post('logout', [SesiController::class, 'logout'])->name('logout');
 
 // Admin routes
 Route::prefix('admin')->group(function () {
