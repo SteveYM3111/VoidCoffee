@@ -9,13 +9,13 @@ class Data extends Model
 {
     use HasFactory;
 
-    protected $table ='data';
+    protected $table ='users';
     protected $primarykey = 'id';
     protected $fillable = [
         'name',
         'email',
+        'password',
         'phone',
-        'description',
-        'status'
+        'role',
     ];
 }

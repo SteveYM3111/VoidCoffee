@@ -19,6 +19,9 @@ return new class extends Migration
             $table->text('description', ['Admin', 'User'])->default('User');
             $table->enum('status', ['Active', 'Not Active'])->default('Active');
             $table->rememberToken();
+            $table->text('description');
+            $table->string('picture');
+            $table->string('status');
             $table->timestamps();
         });
     }

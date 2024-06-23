@@ -32,7 +32,7 @@
                 <li><a href="/admin/Komentar"><i class="fa-solid fa-comment mr-2"></i>Komentar</a></li>
             </ul>
             
-            <div class="justify-center translate-y-96 ml-24">
+            <div class="justify-center translate-y-56 ml-24">
                 <div class="flex-none">
                     <div class="dropdown dropdown-top">
                         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -49,9 +49,8 @@
                             </div>
 
                             <ul class="menu menu-sm p-2">
-                                <li><a class="text-white">Profile</a></li>
-                                <li><a class="text-white">Settings</a></li>
-                                <li><a class="text-white">Logout</a></li>
+                                <li><a href="/akun" class="text-white">Profile</a></li>
+                                <li><a href="/login" class="text-white">Logout</a></li>
                             </ul>
                         </div>
                     </div>
