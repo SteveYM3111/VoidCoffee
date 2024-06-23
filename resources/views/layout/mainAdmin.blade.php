@@ -16,19 +16,18 @@
 <!-- Header -->
 
 <body>
-    <div class="flex h-screen bg-gray-100">
+    <div class="flex h-screen bg-gray-200">
         <!-- Sidebar -->
-        <div class="flex flex-col w-64 bg-base-300 border-r text-neutral">
+        <div class="flex flex-col w-64 bg-green-800 border-r text-neutral">
             <div class="flex items-center justify-center h-16">
                 <span class="text-lg font-semibold"><img src="/image/Logo.png" class="w-20 h-20" alt=""></span>
             </div>
-            <div class="font-bold divider mb-2 text-green-600">VOIDCOFFEE</div>
+            <div class="font-bold divider mb-2 text-white">VOIDCOFFEE</div>
 
             <!-- Sidebar items -->
             <ul class="menu w-full rounded-box text-white">
                 <li><a href="/admin/Dashboard"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a></li>
                 <li><a href="/admin/Data"><i class="fas fa-user-shield mr-2"></i>Data Admin</a></li>
-                <li><a href="/admin/DataCustomer"><i class="fas fa-users mr-2"></i>Data Customer</a></li>
                 <li><a href="/admin/Barang"><i class="fa-solid fa-boxes-stacked mr-2"></i>Data Barang</a></li>
                 <li><a href="/admin/Komentar"><i class="fa-solid fa-comment mr-2"></i>Komentar</a></li>
             </ul>
@@ -42,10 +41,10 @@
                             </div>
                         </div>
                         <div tabindex="0" class="dropdown-content mb-6 z-[1] p-2 shadow bg-base-100 rounded-box w-52 -translate-x-20">
-                            <div class="bg-cyan-400 p-4 rounded-t-lg animate-colorShift">
+                            <div class="bg-green-400 p-4 rounded-t-lg">
                                 <div class="flex flex-col items-center">
                                     <img src="/image/gojoadmin.png" alt="Profile" class="w-24 h-24 rounded-full border-4 border-white">
-                                    <p class="text-white mt-2">VoidWalker</p>
+                                    <p class="text-white mt-2">Void Walker</p>
                                 </div>
                             </div>
 
@@ -58,10 +57,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-    
-        
 
         <!-- Main content -->
         <div class="flex-1 bg-base-co">

@@ -15,7 +15,6 @@ class Data extends Model
         'name',
         'email',
         'phone',
-        'email_verified_at',
         'description',
         'status'
     ];

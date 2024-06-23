@@ -21,11 +21,6 @@ class AdminController extends Controller
         return view('/admin/DataAdmin');
     }
 
-    public function DataCustomer()
-    {
-        return view('/admin/DataCustomer');
-    }
-
     public function Komentar()
     {
         return view('/admin/Komentar');
