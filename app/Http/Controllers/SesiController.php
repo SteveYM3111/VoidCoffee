@@ -8,21 +8,25 @@ use Illuminate\Support\Facades\Auth;
 
 class SesiController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view("login");
     }
-    function login (Request $request){
+
+    public function login(Request $request)
+    {
         $request->validate([
-            'email'=>'required',
-            'password'=>'required'
-        ],
-        [
-            'email.required'=>'Email wajib di isi',
-            'password.required'=>'Password wajib di isi'
+            'email' => 'required|email',
+            'password' => 'required'
+        ], [
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Format email tidak valid',
+            'password.required' => 'Password wajib diisi'
         ]);
+
         $infologin = [
-            'email'=>$request->email,
-            'password'=>$request->password
+            'email' => $request->email,
+            'password' => $request->password
         ];
 
         if (Auth::attempt($infologin)) {
@@ -37,7 +41,8 @@ class SesiController extends Controller
         }
     }
 
-    function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect('login');
     }

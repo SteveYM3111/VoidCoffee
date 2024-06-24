@@ -10,7 +10,7 @@ class Barang extends Model
     use HasFactory;
 
     protected $table ='barang_table';
-    protected $primarykey = 'id';
+    protected $primarykey = 'id_barang';
     protected $fillable = [
         'name',
         'qty',
@@ -20,4 +20,9 @@ class Barang extends Model
         'status'
     ];
     
+    public function orderan()
+    {
+        return $this->hasMany(Orderan::class, 'id_orderan');
+    }
+
 }

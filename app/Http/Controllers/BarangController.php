@@ -30,9 +30,9 @@ class BarangController extends Controller
     return redirect()->back();
 }
 
-public function delete ($id){
+public function delete ($id_barang){
 
-    $Barang = Barang::where('id', $id)->first();
+    $Barang = Barang::where('id_barang', $id_barang)->first();
     if ($Barang) {
         $Barang->delete();
         return redirect()->back()->with('success', 'Barang berhasil dihapus.');
@@ -41,9 +41,9 @@ public function delete ($id){
     }
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_barang)
     {
-        $Barang = Barang::findOrFail($id);
+        $Barang = Barang::findOrFail($id_barang);
     
         $validate = $request->validate([
             'name' => 'required',

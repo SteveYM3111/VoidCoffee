@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Data;
 
-
 class DataController extends Controller
 {
     public function Data(){
@@ -14,6 +13,7 @@ class DataController extends Controller
             'data' => $data
         ]);
     }
+
     public function create(Request $request)
     {
         // Check if the request has a file
@@ -21,23 +21,52 @@ class DataController extends Controller
             $file = $request->file('file');
             $filename = $file->getClientOriginalName();
             // Handle file upload logic here
-            // e.g., move the file to the desired location
             $file->move(public_path('uploads'), $filename);
             return back()->with('success', 'File uploaded successfully');
-        } else {
-            return back()->with('error', 'No file uploaded');
+        } 
+
+        Data::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'email_verified_at' => $request->email_verified_at,
+            'description' => $request->description,
+            'status' => $request->status,
+        ]);
+        
+        return redirect()->back();
+    }
+
+    public function update(Request $request, $id_user)
+    {
+        $data = Data::findOrFail($id_user);
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $filename);
+            $data->picture = 'uploads/' . $filename;
         }
 
+        $data->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'role' => $request->role,
+        ]);
 
-    Data::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'phone' => $request->phone,
-        'email_verified_at' => $request->email_verified_at,
-        'description' => $request->description,
-        'status' => $request->status,
-    ]);
-    return redirect()->back();
-}
-}
+        return redirect()->back()->with('success', 'Data updated successfully');
+    }
 
+    public function deletePengguna($id_user)
+    {
+        $user = Data::findOrFail($id_user);
+        $user->delete();
+        
+        return redirect()->route('data.index')->with('success', 'Data User berhasil dihapus');
+    }
+    
+    
+    
+
+}

@@ -80,48 +80,33 @@
                 <td>{{ $brg -> name }}</td>
                 <td>{{ $brg -> price }}</td>
                 <td>{{ $brg -> status }}</td>
-                <td><span>{{ $brg->name }}</span></td>
-                <td>{{ $brg->price }}</td>
-                <td>{{ $brg->status }}</td>
                 <th>
                     <!-- You can open the modal using ID.showModal() method -->
-                    <button class="btn btn-error btn-xs rounded-sm text-white" onclick="my_modal_4{{$brg->id}}.showModal()">Delete</button>
-                    <dialog id="my_modal_4{{$brg->id}}" class="modal">
-                    <button class="btn btn-error btn-xs rounded-sm text-white" onclick="my_modal_delete{{ $brg->id }}.showModal()">Hapus</button>
-                    <dialog id="my_modal_delete{{ $brg->id }}" class="modal">
+                    <button class="btn btn-error btn-xs rounded-sm text-white" onclick="my_modal_4{{$brg->id_barang}}.showModal()">Delete</button>
+                    <dialog id="my_modal_4{{$brg->id_barang}}" class="modal">
                         <div class="modal-box">
                             <h3 class="font-bold text-lg">
                                 <center>Are you sure you want to delete this Item?</center>
                             </h3>
-                            <h3 class="font-bold text-lg"><center>Anda yakin ingin menghapus?</center></h3>
                             <div class="flex gap-4 justify-center my-5">
                                 <form method="dialog">
                                     <button class="btn rounded-sm btn-info text-white btn-sm">Cancel</button>
                                 </form>
-                                <form action="{{ route('barang.delete', $brg->id) }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('barang.delete', $brg->id_barang) }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('delete')
                                 <button class="btn rounded-sm btn-error text-white btn-sm">Delete</button>
-                                    <button class="btn rounded-sm btn-error text-white btn-sm">Hapus</button>
                                 </form>
                             </div>
                         </div>
                     </dialog>
 
-                    <button class="btn btn-info rounded-none btn-xs text-gray-200" onclick="my_modal_edit{{ $brg->id }}.showModal()">Edit</button>
-                    <dialog id="my_modal_edit{{ $brg->id }}" class="modal">
+                    <button class="btn btn-info rounded-none btn-xs text-gray-200" onclick="my_modal_edit{{ $brg->id_barang }}.showModal()">Edit</button>
+                    <dialog id="my_modal_edit{{ $brg->id_barang }}" class="modal">
                         <div class="modal-box">
-                        <form action="{{ route('barang.update', $brg->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('barang.update', $brg->id_barang) }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('patch')
-                                    <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xs mb-5" name="name" />
-                                    <input type="text" placeholder="Quantity" class="input input-bordered w-full max-w-xs mb-5" name="qty"/>
-                                    <input type="text" placeholder="Price" class="input input-bordered w-full max-w-xs mb-5" name="price"/>
-                                    <input type="text" placeholder="Description" class="input input-bordered w-full max-w-xs mb-5" name="description" />
-                                    <input type="text" placeholder="Status" class="input input-bordered w-full max-w-xs mb-5" name="status"/> 
-                            <form action="{{ route('barang.update', $brg->id) }}" method="post" enctype="multipart/form-data">
-                                @csrf
-                                @method('patch')
                                 <div>
                                     <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xs mb-5" name="name" value="{{ old('name', $brg->name) }}" />
                                     @error('name')
@@ -154,13 +139,6 @@
                                 </div>
                                 <div>
                                     <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-5" name="picture"/>
-                            <input id="file-upload" type="file" class="hidden"/>
-                            <div class="flex justify-end">
-                                <form method="dialog">
-                                    <button class=" btn btn-sm btn-error text-white w-xs right-2 top-2">Cancel</button>
-                                </form>        
-                                <button class="ms-2 btn btn-sm btn-success text-white w-xs right-2 top-2">Edit</button>
-                            </div>
                                     @error('picture')
                                         <div class="text-red-500">{{ $message }}</div>
                                     @enderror
@@ -168,7 +146,7 @@
 
                                 <div class="flex justify-end">
                                     <form method="dialog">
-                                        <button class="btn btn-sm btn-error text-white w-xs right-2 top-2">Batal</button>
+                                        <button class="btn btn-sm btn-error text-white w-xs right-2 top-2">Cancel</button>
                                     </form>
                                     <button class="ms-2 btn btn-sm btn-success text-white w-xs right-2 top-2">Edit</button>
                                 </div>

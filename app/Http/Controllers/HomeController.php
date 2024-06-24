@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Barang;
 
 
 
 class HomeController extends Controller
 {
+    public function home(){
+    return view('/');
+    }
     public function beranda()
     {
     return view('beranda');
@@ -52,9 +56,9 @@ class HomeController extends Controller
     {
     return view('newlokasi');
     }
-    public function newproduk()
-    {
-    return view('newproduk');
+    public function newproduk(){
+        $barang = Barang::all();
+        return view('newproduk', ['barang' => $barang]);
     }
     public function akun()
     {

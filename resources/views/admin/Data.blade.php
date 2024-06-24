@@ -1,84 +1,32 @@
 @extends('layout.mainAdmin')
 @section('content')
-<div class="ml-4 mt-4">
 
 <div class="flex ms-8 mt-5">
-
-
     <!-- Open the modal using ID.showModal() method -->
-<button class="btn" onclick="my_modal_create.showModal()">+ Add Data</button>
+    <button class="btn" onclick="my_modal_create.showModal()">+ Add Data</button>
 
-<dialog id="my_modal_create" class="modal modal-bottom sm:modal-middle">
-  <div class="modal-box">
-    <h3 class="font-bold text-lg">Please add your Credential!</h3>
-    <p class="py-4">You may close this page by pressing Esc or by filling the form below.</p>
-    <form action="{{ route('data.create') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-      <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xl mb-5" name="name" />
-      <input type="text" placeholder="Email" class="input input-bordered w-full max-w-xl mb-5" name="email"/>
-      <input type="text" placeholder="Phone" class="input input-bordered w-full max-w-xl mb-5" name="phone"/>
-      <select name="description" class="input input-bordered w-full max-w-xl mb-5">
-        <option value="Admin">Admin</option>
-        <option value="User">User</option>
-      </select>
-      <select name="status" class="input input-bordered w-full max-w-xl mb-5">
-        <option value="Active">Active</option>
-        <option value="Not Active">Not Active</option>
-      </select>
-   
-        <div class="ml-48 mt-4"><button type="submit">Upload</button></div>
-    </form>  
-    <h3 class="font-bold text-lg py-4">Please fill the collums below!</h3>
-    <form action="{{ route('data.create') }}" method="post" enctype="multipart/form-data">
-        @csrf
-        <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xl mb-5" name="name"/>
-        <input type="text" placeholder="Email" class="input input-bordered w-full max-w-xl mb-5" name="email"/>
-        <input type="text" placeholder="Password" class="input input-bordered w-full max-w-xl mb-5" name="password"/>
-        <input type="text" placeholder="Phone" class="input input-bordered w-full max-w-xl mb-5" name="phone"/>
-        <select class="input input-bordered w-full max-w-xs mb-5" name="role">
-            <option selected disabled>Pilih kontol</option>
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
-        </select>
-        <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-5" name="picture"/>
-        <div class="py-2"><button type="submit" class="btn btn-primary">Submit</button></div>
-    </form>
-    
-  </div>
-</dialog>  
-<input class="h-12 ms-4 pl-10 pr-4 text-base placeholder-gray-500 border rounded-full focus:shadow-outline" type="search" placeholder="Search">
-</div>
-<div class="overflow-x-auto ms-8 mt-5 border rounded">
-    <table class="table">
-        <!-- head -->
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Created At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- row 1 -->
-            @foreach($data as $dt)
-                <tr>
-                    <td>{{ $dt->name }}</td>
-                    <td>{{ $dt->email }}</td>
-                    <td>{{ $dt->phone }}</td>
-                    <td>{{ $dt->description }}</td>
-                    <td>{{ $dt->status }}</td>
-                    <td>{{ $dt->created_at }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-</dialog>
+    <dialog id="my_modal_create" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Please add your Credential!</h3>
+            <p class="py-4">You may close this page by pressing Esc or by filling the form below.</p>
+            <form action="{{ route('data.create') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xl mb-5" name="name" />
+                <input type="text" placeholder="Email" class="input input-bordered w-full max-w-xl mb-5" name="email"/>
+                <input type="text" placeholder="Password" class="input input-bordered w-full max-w-xl mb-5" name="password"/>
+                <input type="text" placeholder="Phone" class="input input-bordered w-full max-w-xl mb-5" name="phone"/>
+                <select name="description" class="input input-bordered w-full max-w-xl mb-5">
+                    <option selected disabled>Please choose</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                </select>
+                <div class="ml-48 mt-4"><button type="submit">Upload</button></div>
+            </form>  
+        </div>
+    </dialog>  
     <input class="h-12 ms-4 pl-10 pr-4 text-base placeholder-gray-500 border rounded-full focus:shadow-outline" type="search" placeholder="Cari Barang">
 </div>
+
 <div class="overflow-x-auto ms-8 mt-5 border rounded">
     <table class="table">
         <!-- head -->
@@ -105,35 +53,24 @@
                         </div>
                     </div>
                 </td>
-                <td>{{ $dt -> name }}</td>
-                <td>{{ $dt -> email }}</td>
-                <!-- <td>{{ $dt -> password }}</td> -->
-                <td>{{ $dt -> phone }}</td>
-                <td>{{ $dt -> role }}</td>
+                <td>{{ $dt->name }}</td>
+                <td>{{ $dt->email }}</td>
+                <td>{{ $dt->phone }}</td>
+                <td>{{ $dt->role }}</td>
                 <th>
-                    <!-- You can open the modal using ID.showModal() method -->
-                    <button class="btn btn-error btn-xs rounded-sm text-white" onclick="my_modal_4{{$dt->id}}.showModal()">Hapus</button>
-                    <dialog id="my_modal_4{{$dt->id}}" class="modal">
+                    <!-- Delete button -->
+                    <button class="btn btn-error btn-xs rounded-sm text-white" onclick="document.getElementById('delete-form-{{ $dt->id_user }}').submit();">Hapus</button>
+                    <form id="delete-form-{{ $dt->id_user }}" action="{{ route('data.delete', $dt->id_user) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+
+
+                    <!-- Edit button -->
+                    <button class="btn btn-info rounded-none btn-xs text-gray-200" onclick="my_modal_5{{$dt->id_user}}.showModal()">Edit</button>
+                    <dialog id="my_modal_5{{$dt->id_user}}" class="modal">
                         <div class="modal-box">
-                            <h3 class="font-bold text-lg">
-                                <center>Anda yakin ingin menghapus?</center>
-                            </h3>
-                            <div class="flex gap-4 justify-center my-5">
-                                <form method="dialog">
-                                    <button class="btn rounded-sm btn-info text-white btn-sm">Batal</button>
-                                </form>
-                                <form action="{{ route('data.delete', $dt->id) }}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    @method('delete')
-                                <button class="btn rounded-sm btn-error text-white btn-sm">Hapus</button>
-                                </form>
-                            </div>
-                        </div>
-                    </dialog>
-                    <button class="btn btn-info rounded-none btn-xs text-gray-200" onclick="my_modal_5{{$dt->id}}.showModal()">Edit</button>
-                    <dialog id="my_modal_5{{$dt->id}}" class="modal">
-                        <div class="modal-box">
-                            <form action="{{ route('data.update', $dt->id) }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('data.update', $dt->id_user) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
                                 <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xs mb-5" name="name" value="{{ $dt->name }}"/>
@@ -148,13 +85,12 @@
                                 <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-5" name="picture"/>
 
                                 <div class="flex justify-end">
-                                    <button type="button" class="btn btn-sm btn-error text-white w-xs right-2 top-2" onclick="closeModal('my_modal_5{{$dt->id}}')">Batal</button>
+                                    <button type="button" class="btn btn-sm btn-error text-white w-xs right-2 top-2" onclick="closeModal('my_modal_5{{$dt->id_user}}')">Batal</button>
                                     <button type="submit" class="ms-2 btn btn-sm btn-success text-white w-xs right-2 top-2">Edit</button>
                                 </div>
                             </form>
                         </div>
                     </dialog>
-
                 </th>
             </tr>
             @endforeach
@@ -162,3 +98,9 @@
     </table>
 </div>
 @endsection
+
+<script>
+    function closeModal(id) {
+        document.getElementById(id).close();
+    }
+</script>

@@ -29,10 +29,11 @@
                 <li><a href="/admin/Dashboard"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a></li>
                 <li><a href="/admin/Data"><i class="fas fa-user-shield mr-2"></i>Data Admin</a></li>
                 <li><a href="/admin/Barang"><i class="fa-solid fa-boxes-stacked mr-2"></i>Data Barang</a></li>
+                <li><a href="/admin/orderan"><i class="fa-solid fa-boxes-stacked mr-2"></i>Data Pesanan</a></li>
                 <li><a href="/admin/Komentar"><i class="fa-solid fa-comment mr-2"></i>Komentar</a></li>
             </ul>
             
-            <div class="justify-center translate-y-56 ml-24">
+            <div class="justify-center translate-y-96 ml-24">
                 <div class="flex-none">
                     <div class="dropdown dropdown-top">
                         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -44,7 +45,11 @@
                             <div class="bg-green-400 p-4 rounded-t-lg">
                                 <div class="flex flex-col items-center">
                                     <img src="/image/gojoadmin.png" alt="Profile" class="w-24 h-24 rounded-full border-4 border-white">
-                                    <p class="text-white mt-2">Void Walker</p>
+                                    @if(Auth::check())
+                                    <p class="text-white mt-2">{{ Auth::user()->nama }}</p>
+                                    @else
+                                    <p class="text-white mt-2">Guest</p>
+                                    @endif
                                 </div>
                             </div>
 

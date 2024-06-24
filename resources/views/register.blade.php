@@ -23,7 +23,7 @@
               </ul>
             </div>
           @endif
-          <form action="{{ route('register.user') }}" method="post" enctype="multipart/form-data">
+          <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="text" name="role" value="user" hidden>
             <div>
