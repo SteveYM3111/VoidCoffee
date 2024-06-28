@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,4 +46,29 @@ class SesiController extends Controller
         Auth::logout();
         return redirect('login');
     }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('akun', ['user' => $user]);
+    }
+
+    public function newberanda()
+    {
+        $user = Auth::user();
+        return view('newberanda', ['user' => $user]);
+    }
+
+    public function newkontak()
+    {
+        $user = Auth::user();
+        return view('newkontak', ['user' => $user]);
+    }
+
+    public function newlokasi()
+    {
+        $user = Auth::user();
+        return view('newlokasi', ['user' => $user]);
+    }
+
 }

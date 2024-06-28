@@ -6,7 +6,7 @@
         <div class="container mx-auto text-center">
             <h1 class="text-4xl font-bold text-white">Jelajahi Aroma dan Citra Rasa Terbaik</h1>
             <p class="text-lg text-white mt-4">Selamat datang di voidcoffee store, destinasi utama para pecinta kopi dengan kualitas premium</p>
-            <a href="#" class="mt-8 inline-block bg-green-500 text-white py-2 px-4 rounded">Shop Now</a>
+            <a href="/newproduk" class="mt-8 inline-block bg-green-500 text-white py-2 px-4 rounded">Shop Now</a>
         </div>
     </header>
 

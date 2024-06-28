@@ -30,27 +30,21 @@ Route::get('/tentang', function (){
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-
 Route::get('/pembayaran', function (){
     return view('pembayaran');
 });
-Route::get('/newberanda', function () {
-    return view('newberanda');
-});
-Route::get('/newkontak', function () {
-    return view('newkontak');
-});
-Route::get('/newlokasi', function () {
-    return view('newlokasi');
+
+// Authentication routes
+Route::middleware('auth')->group(function () {
+    Route::get('/newberanda', [SesiController::class, 'newberanda']);
+    Route::get('/newkontak', [SesiController::class, 'newkontak']);
+    Route::get('/newlokasi', [SesiController::class, 'newlokasi']);
+    Route::get('/newproduk', [HomeController::class, 'newproduk']);
+    Route::post('/newproduk/{id_barang}', [OrderanController::class, 'create'])->name('orderan.create');
+
+    Route::get('/akun', [SesiController::class, 'profile'])->name('profile');
 });
 
-Route::get('/newproduk', [HomeController::class, 'newproduk']);
-Route::post('/newproduk/{id_barang}', [OrderanController::class, 'create'])->name('orderan.create');
-
-
-Route::get('/akun', function () {
-    return view('akun');
-});
 Route::get('/descproduk', function () {
     return view('descproduk');
 });
@@ -77,10 +71,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/DataCustomer', [AdminController::class, 'DataCustomer']);
     Route::get('/Komentar', [AdminController::class, 'Komentar']);
     Route::get('/orderan', [OrderanController::class, 'index']);
-
     Route::get('/Barang', [BarangController::class, 'Barang'])->name('barang.index');
     Route::post('/Barang', [BarangController::class, 'create'])->name('barang.create');
     Route::patch('/barang/{id_barang}/edit', [BarangController::class, 'update'])->name('barang.update');
     Route::delete('/barang/{id_barang}', [BarangController::class, 'delete'])->name('barang.delete');
-    
 });
+
