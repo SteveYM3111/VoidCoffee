@@ -16,26 +16,29 @@ class DataController extends Controller
 
     public function create(Request $request)
     {
-        // Check if the request has a file
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $filename = $file->getClientOriginalName();
-            // Handle file upload logic here
-            $file->move(public_path('uploads'), $filename);
-            return back()->with('success', 'File uploaded successfully');
-        } 
-
+        // Validate request inputs
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'password' => 'required|min:5', 
+            'description' => 'required',
+            'status' => 'required',
+        ]);
+        
+        // Create data
         Data::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'email_verified_at' => $request->email_verified_at,
+            'password' => bcrypt($request->password), 
             'description' => $request->description,
             'status' => $request->status,
         ]);
-        
-        return redirect()->back();
+    
+        return redirect()->back()->with('success', 'Data created successfully');
     }
+    
 
     public function update(Request $request, $id_user)
     {
