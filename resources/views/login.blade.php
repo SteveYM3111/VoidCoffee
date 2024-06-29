@@ -23,13 +23,13 @@
               </ul>
             </div>
           @endif
-          <form action="/login" method="POST" class="w-full max-w-xs">
+          <form action="{{ route('login.post') }}" method="POST" class="w-full max-w-xs">
             @csrf
             <label class="form-control w-full h-120">
               <p class="text-xl justify-end">Welcome Back Admin!</p>
               <div class="label">
                 <span class="label-text text-xl">Email</span>
-              </div>
+              </div>  
               <input type="text" value="{{old('email')}}" name="email" placeholder="Email" class="input input-bordered w-full max-w-xs" />
               <div class="label">
                 <span class="label-text text-xl">Password</span>
@@ -37,7 +37,7 @@
               <input type="password" name="password" placeholder="Password" class="input input-bordered w-full max-w-xs" />
             </label>
             <div class="form-control">
-              <label class="label cursor-pointer">
+              <label class="label cursor-pointer">  
                 <span class="label-text">Remember me</span>
                 <input type="checkbox" class="toggle" checked />
               </label>
@@ -45,6 +45,8 @@
             <div class="card-actions justify-start">
               <button type="submit" class="btn btn-primary">Login</button>
             </div>
+            <div class="card-actions justify-end"></div>
+              <button type="submit" class="color-blue">Register</button>  
           </form>
         </div>
       </div>

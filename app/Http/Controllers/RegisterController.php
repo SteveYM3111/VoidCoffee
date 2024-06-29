@@ -54,6 +54,10 @@ class RegisterController extends Controller
         Auth::login($user);
 
         return redirect('/newberanda');
+
+        Auth::login($admin);
+
+        return redirect('/admin/Dashboard');
     }
     
     }

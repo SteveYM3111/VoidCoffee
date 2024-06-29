@@ -23,22 +23,25 @@ class SesiController extends Controller
             'email.email' => 'Format email tidak valid',
             'password.required' => 'Password wajib diisi'
         ]);
-
+    
         $infologin = [
             'email' => $request->email,
             'password' => $request->password
         ];
-
+    
         if (Auth::attempt($infologin)) {
+            \Log::info('Login successful', ['user' => Auth::user()]);
             $user = Auth::user();
+            \Log::info('User role', ['role' => $user->role]);   
             if ($user->role == 'admin') {
                 return redirect('/admin/Dashboard');
             } else {
                 return redirect('/newberanda');
             }
         } else {
+            \Log::warning('Login failed', ['email' => $request->email]);
             return redirect('login')->withErrors('Username dan Password tidak sesuai')->withInput();
-        }
+        }   
     }
 
     public function logout()

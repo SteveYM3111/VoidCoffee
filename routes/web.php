@@ -41,17 +41,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/newlokasi', [SesiController::class, 'newlokasi']);
     Route::get('/newproduk', [HomeController::class, 'newproduk']);
     Route::post('/newproduk/{id_barang}', [OrderanController::class, 'create'])->name('orderan.create');
-
+    
     Route::get('/akun', [SesiController::class, 'profile'])->name('profile');
 });
+
 
 Route::get('/descproduk', function () {
     return view('descproduk');
 });
-Route::get('/login', function (){
-    return view('login');
-});
-Route::post('/login', [SesiController::class, 'login'])->name('login');
+Route::get('/login', [SesiController::class, 'index'])->name('login');
+Route::post('/login', [SesiController::class, 'login'])->name('login.post');
+
 
 Route::get('/admin/Dashboard', [AdminController::class, 'Dashboard']);
 Route::get('/admin/Data', [AdminController::class, 'Data']);
