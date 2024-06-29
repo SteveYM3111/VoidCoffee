@@ -21,12 +21,13 @@
                     <option value="admin">Admin</option>
                     <option value="user">User</option>
                 </select>
-                <div class="ml-48 mt-4">
-                    <button type="submit">Upload</button>
+                <div class="flex justify-end mt-4">
+                    <button type="button" class="btn btn-sm btn-error text-white" onclick="document.getElementById('my_modal_create').close()">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-success text-white">Upload</button>
                 </div>
             </form>  
         </div>
-    </dialog>  
+    </dialog>   
     <input class="h-12 ms-4 pl-10 pr-4 text-base placeholder-gray-500 border rounded-full focus:shadow-outline" type="search" placeholder="Search Data">
 </div>
 
@@ -35,35 +36,21 @@
         <!-- Table header -->
         <thead>
             <tr>
-                <th>Photo</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th>Actions</th>
+                <th class="text-black">Name</th>
+                <th class="text-black">Email</th>
+                <th class="text-black">Phone</th>
+                <th class="text-black">Role</th>
+                <th class="text-black">Actions</th>
             </tr>
         </thead>
         <tbody>
             <!-- Table rows -->
             @foreach($data as $dt)
             <tr>
-                <td>
-                    @if($dt->picture)
-                        <div class="flex gap-3">
-                            <div class="avatar">
-                                <div class=" w-24 h-24">
-                                    <img src="{{ asset($dt->picture) }}" alt="Avatar Tailwind CSS Component" />
-                                </div>
-                            </div>
-                        </div>
-                    @else
-                        <span>No Image Available</span>
-                    @endif
-                </td>
-                <td>{{ $dt->name }}</td>
-                <td>{{ $dt->email }}</td>
-                <td>{{ $dt->phone }}</td>
-                <td>{{ $dt->role }}</td>
+                <td class="text-black">{{ $dt->name }}</td>
+                <td class="text-black">{{ $dt->email }}</td>
+                <td class="text-black">{{ $dt->phone }}</td>
+                <td class="text-black">{{ $dt->role }}</td>
                 <td>
                     <!-- Delete button -->
                     <button class="btn btn-error btn-xs rounded-sm text-white" onclick="document.getElementById('delete-form-{{ $dt->id_user }}').submit();">Delete</button>
@@ -88,8 +75,6 @@
                                     <option value="admin" {{ $dt->role == 'admin' ? 'selected' : '' }}>Admin</option>
                                     <option value="user" {{ $dt->role == 'user' ? 'selected' : '' }}>User</option>
                                 </select>
-                                <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-5" name="picture"/>
-
                                 <div class="flex justify-end">
                                     <button type="button" class="btn btn-sm btn-error text-white w-xs right-2 top-2" onclick="document.getElementById('my_modal_edit_{{ $dt->id_user }}').close()">Cancel</button>
                                     <button type="submit" class="btn btn-sm btn-success text-white w-xs right-2 top-2">Edit</button>

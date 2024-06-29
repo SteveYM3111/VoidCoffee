@@ -28,42 +28,41 @@
             <input type="text" name="role" value="user" hidden>
             <div>
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" value="{{ old('name') }}">
+                <input type="text" id="name" name="name" value="{{ old('name') }}" class="input input-bordered w-full max-w-xs mb-5">
                 @error('name')
-                    <div>{{ $message }}</div>
+                    <div class="text-red-500">{{ $message }}</div>
                 @enderror
             </div>
             <div>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}">
+                <input type="email" id="email" name="email" value="{{ old('email') }}" class="input input-bordered w-full max-w-xs mb-5">
                 @error('email')
-                    <div>{{ $message }}</div>
+                    <div class="text-red-500">{{ $message }}</div>
                 @enderror
             </div>
             <div>
                 <label for="phone">Phone</label>
-                <input type="number" id="phone" name="phone">
-                @error('Phone')
-                    <div>{{ $message }}</div>
+                <input type="number" id="phone" name="phone" class="input input-bordered w-full max-w-xs mb-5">
+                @error('phone')
+                    <div class="text-red-500">{{ $message }}</div>
                 @enderror
             </div>
             <div>
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" class="input input-bordered w-full max-w-xs mb-5">
                 @error('password')
-                    <div>{{ $message }}</div>
+                    <div class="text-red-500">{{ $message }}</div>
                 @enderror
             </div>
             <div>
                 <label for="password_confirmation">Confirm Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation">
+                <input type="password" id="password_confirmation" name="password_confirmation" class="input input-bordered w-full max-w-xs mb-5">
                 @error('password_confirmation')
-                    <div>{{ $message }}</div>
+                    <div class="text-red-500">{{ $message }}</div>
                 @enderror
             </div>
-
-            <button type="submit">Register</button>
-        </form>
+            <button type="submit" class="btn btn-primary w-full">Register</button>
+          </form>
         </div>
       </div>
       <div class="border flex items-center justify-center bg-gradient-to-b from-blue-300 to-blue-500 p-4">

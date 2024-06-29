@@ -32,9 +32,9 @@ class BarangController extends Controller
 
 public function delete ($id_barang){
 
-    $Barang = Barang::where('id_barang', $id_barang)->first();
-    if ($Barang) {
-        $Barang->delete();
+    $barang = Barang::findOrFail($id_barang);   
+    if ($barang) {
+        $barang->delete();
         return redirect()->back()->with('success', 'Barang berhasil dihapus.');
     }else{
         return redirect()->back()->with('error', 'Barang tidak ditemukan.');

@@ -6,11 +6,10 @@
         <!-- head -->
         <thead>
             <tr>
-                <th>Foto</th>
-                <th>Name/Brand</th>
-                <th>Harga</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th class="text-black">Foto</th>
+                <th class="text-black">Name</th>
+                <th class="text-black">Email</th>
+                <th class="text-black">Harga</th>
             </tr>
         </thead>
         <tbody>
@@ -25,10 +24,9 @@
                         </div>
                     </div>
                 </td>
-                <td>{{ $ord->name }}</td>
-                <td>{{ $ord->email }}</td>
-                <td>{{ $ord->whatsapp }}</td>
-                <td><!-- Actions column, add your actions here --></td>
+                <td class="text-black">{{ $ord->name }}</td>
+                <td class="text-black">{{ $ord->email }}</td>
+                <td class="text-black">{{ $ord->whatsapp }}</td>
             </tr>
             @endforeach
         </tbody>

@@ -8,6 +8,7 @@ use App\Http\Controllers\DataController;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\OrderanController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\KomentarController;
 
 Route::get('/', function () {
     return view('newberandalogin');
@@ -59,7 +60,7 @@ Route::get('/admin/Barang', [BarangController::class, 'Barang'])->name('barang.i
 Route::post('/admin/Barang', [BarangController::class, 'create'])->name('barang.create');
 Route::patch('/admin/Barang/{id}/edit', [BarangController::class, 'update'])->name('barang.update');
 Route::delete('/admin/Data/{id_user}', [DataController::class, 'deletePengguna'])->name('data.delete');
-Route::get('/admin/Komentar', [AdminController::class, 'Komentar']);
+Route::get('/admin/Komentar', [KomentarController::class, 'Komentar']);
 
 // Admin routes
 Route::prefix('admin')->group(function () {
@@ -69,7 +70,9 @@ Route::prefix('admin')->group(function () {
     Route::patch('/Data/{id_user}', [DataController::class, 'update'])->name('data.update');
     Route::delete('/Data/{id_user}', [DataController::class, 'deletePengguna'])->name('data.delete');
     Route::get('/DataCustomer', [AdminController::class, 'DataCustomer']);
-    Route::get('/Komentar', [AdminController::class, 'Komentar']);
+    Route::get('/Komentar', [KomentarController::class, 'Komentar']);
+    Route::post('/Komentar', [KomentarController::class, 'create'])->name('komentar.create');
+    Route::get('/akunAdmin', [AdminController::class, 'akunAdmin']);
     Route::get('/orderan', [OrderanController::class, 'index']);
     Route::get('/Barang', [BarangController::class, 'Barang'])->name('barang.index');
     Route::post('/Barang', [BarangController::class, 'create'])->name('barang.create');

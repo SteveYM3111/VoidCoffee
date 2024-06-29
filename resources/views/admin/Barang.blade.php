@@ -24,7 +24,7 @@
                 <div>
                     <input type="text" placeholder="Price" class="input input-bordered w-full max-w-xs mb-5" name="price" value="{{ old('price') }}" />
                     @error('price')
-                        <div class="text-red-500">{{ $message }}</div>
+                        <div class="text-red-500">{{ $message }}</div>      
                     @enderror
                 </div>
                 <div>
@@ -58,11 +58,11 @@
         <!-- head -->
         <thead>
             <tr>
-                <th>Foto</th>
-                <th>Name/Brand</th>
-                <th>Harga</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th class="text-black">Foto</th>
+                <th class="text-black">Name/Brand</th>
+                <th class="text-black">Harga</th>
+                <th class="text-black">Status</th>
+                <th class="text-black">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -77,9 +77,9 @@
                         </div>
                     </div>
                 </td>
-                <td>{{ $brg -> name }}</td>
-                <td>{{ $brg -> price }}</td>
-                <td>{{ $brg -> status }}</td>
+                <td class="text-black">{{ $brg -> name }}</td>
+                <td class="text-black">{{ $brg -> price }}</td>
+                <td class="text-black">{{ $brg -> status }}</td>
                 <th>
                     <!-- You can open the modal using ID.showModal() method -->
                     <button class="btn btn-error btn-xs rounded-sm text-white" onclick="my_modal_4{{$brg->id_barang}}.showModal()">Delete</button>

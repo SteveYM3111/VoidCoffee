@@ -56,6 +56,7 @@ class DataController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'role' => $request->role,
+            'picture' => $data->picture
         ]);
 
         return redirect()->back()->with('success', 'Data updated successfully');

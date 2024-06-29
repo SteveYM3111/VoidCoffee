@@ -62,4 +62,50 @@
         </div>
     </section>
 
+<div class="card card-side bg-base-100 shadow-xl">
+  <figure>
+    <img
+      class="w-40 h-40 ml-6"
+      src="/image/woman1.png"
+      alt="Movie" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">New movie is released!</h2>
+    <p>Click the button to watch on Jetflix app.</p>
+    <div class="card-actions justify-end">
+      <!-- You can open the modal using ID.showModal() method -->
+      <button class="btn" onclick="document.getElementById('my_modal_create').showModal()">+ Komentar</button>
+        <dialog id="my_modal_create" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+            <h3 class="font-bold text-lg py-4">Please fill out the form below!</h3>
+            <form action="{{ route('komentar.create') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div>
+                    <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xs mb-5" name="name" value="{{ old('name') }}" />
+                    @error('name')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div>
+                    <input type="text" placeholder="Email" class="input input-bordered w-full max-w-xs mb-5" email="email" value="{{ old('email') }}" />
+                    @error('email')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div>
+                    <input type="text" placeholder="Komentar" class="input input-bordered w-full max-w-xs mb-5" komentar="komentar" value="{{ old('komentar') }}" />
+                    @error('komentar')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mt-4 ml-48">
+                    <button type="submit" class="btn btn-sm btn-success text-white">Upload</button>
+                </div>  
+            </div>
+        </dialog>
+
+    </div>
+  </div>
+</div>                
+
 @endsection

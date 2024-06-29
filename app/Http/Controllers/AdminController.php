@@ -25,12 +25,20 @@ class AdminController extends Controller
     }
     
 
-    public function Komentar()
-    {
-        return view('/admin/Komentar');
+    public function Komentar(){
+        $komentar = Komentar::all();
+        return view('admin/Komentar', [
+            'komentar' => $komentar
+        ]);
     }
+
     public function orderan()
     {
         return view('/admin/orderan');
+
+    }
+    public function akunAdmin()
+    {
+        return view('/admin/akunAdmin');
     }
 }
