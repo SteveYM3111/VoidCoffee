@@ -88,15 +88,14 @@
                                 @enderror
                             </div>
                             <div>
-                                <input type="text" placeholder="Price" class="input input-bordered w-full max-w-xs mb-5" name="price" value="{{ $brg->price }}" disabled />
+                                <input type="text" placeholder="Price" class="input input-bordered w-full max-w-xs mb-5" value="{{ $brg->price }}" disabled />
+                                <input type="hidden" name="price" value="{{ $brg->price }}" />
                                 @error('price')
                                     <div class="text-red-500">{{ $message }}</div>
                                 @enderror
                             </div>
-                                <input value="{{ $brg->id_barang }}" class="hidden" />
-                                @foreach($user as $usr)
-                                <input value="{{ $usr->id_user }}" class="hidden" />
-                                @endforeach
+                            <input type="hidden" name="id_barang" value="{{ $brg->id_barang }}" />
+                            <input type="hidden" name="id_user" value="{{ Auth::id() }}" />
                             <div>
                                 <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-5" name="picture"/>
                                 @error('picture')
@@ -104,9 +103,8 @@
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            
-
                         </form>
+
                     </div>
                 </dialog>
             </div>
