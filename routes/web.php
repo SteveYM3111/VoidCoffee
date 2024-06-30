@@ -19,8 +19,8 @@ Route::get('/beranda', function () {
 Route::get('/produk', function () {
     return view('produk');
 });
-Route::get('/kontak', function () { 
-    return view('kontak'); 
+Route::get('/kontak', function () {
+    return view('kontak');
 });
 Route::get('/lokasi', function (){
     return view('lokasi');
@@ -41,13 +41,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/newkontak', [SesiController::class, 'newkontak']);
     Route::get('/newlokasi', [SesiController::class, 'newlokasi']);
     Route::get('/newproduk', [HomeController::class, 'newproduk']);
- 
+
     Route::post('/newproduk/{id_barang}', [OrderanController::class, 'create'])->name('orderan.create');
-    
+
     Route::get('/akun', [SesiController::class, 'profile'])->name('profile');
 });
 
-Route::post('/history/{id_orderan}', [orderanController::class, 'cetakResi']);
+Route::post('/history/{id_orderan}', [orderanController::class, 'cetakResi'])->name('orderan.cetakResi');
 Route::get('/history', [HomeController::class, 'history']);
 
 Route::get('/descproduk', function () {

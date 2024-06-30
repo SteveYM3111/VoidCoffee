@@ -13,6 +13,7 @@ class DummyUsersSeeder extends Seeder
             [
                 'name'=>'Admin',
                 'email'=>'Admin@gmail.com',
+                'phone'=>'081234567890',
                 'role'=>'Admin',
                 'password'=>bcrypt(12345)
 
@@ -20,6 +21,7 @@ class DummyUsersSeeder extends Seeder
             [
                 'name'=>'User',
                 'email'=>'User@gmail.com',
+                'phone'=>'081234567890',
                 'role'=>'User',
                 'password'=>bcrypt(12345)
 

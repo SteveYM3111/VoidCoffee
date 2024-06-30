@@ -19,9 +19,9 @@ class Orderan extends Model
         'whatsapp',
         'picture',
         'price',
-
+        'no_resi',
     ];
-    public function user() 
+    public function user()
     {
         return $this->belongsTo(User::class, 'id_user');
     }

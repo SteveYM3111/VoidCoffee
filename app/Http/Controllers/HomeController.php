@@ -74,8 +74,8 @@ class HomeController extends Controller
     }
     public function history()
     {
-    $user = Auth::user();   
-    $orderan = Orderan::all();
+    $user = Auth::user();
+    $orderan = Orderan::with('barang')->get();
     return view('history',['orderan' => $orderan, 'user' => $user]);
     }
-} 
+}

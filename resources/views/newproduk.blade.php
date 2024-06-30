@@ -21,6 +21,7 @@
                             <a href="/newkontak" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">About Us</a>
                             <a href="/newlokasi" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">Location</a>
                             <a href="/newproduk" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">Products</a>
+                            <a href="/history" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">History</a>
                         </div>
                     </div>
                 </div>
@@ -88,8 +89,7 @@
                                 @enderror
                             </div>
                             <div>
-                                <input type="text" placeholder="Price" class="input input-bordered w-full max-w-xs mb-5" value="{{ $brg->price }}" disabled />
-                                <input type="hidden" name="price" value="{{ $brg->price }}" />
+                                <input type="text" placeholder="Price" class="input input-bordered w-full max-w-xs mb-5" name="price" value="{{ $brg->price }}" readonly />
                                 @error('price')
                                     <div class="text-red-500">{{ $message }}</div>
                                 @enderror
@@ -104,7 +104,6 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
-
                     </div>
                 </dialog>
             </div>
@@ -127,7 +126,7 @@
             <p>Sun: Closed</p>
         </div>
     </footer>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>

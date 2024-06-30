@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Orderan;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Str;
 
 class OrderanController extends Controller
 {
@@ -21,11 +22,12 @@ class OrderanController extends Controller
             'email' => 'required|email|max:255',
             'whatsapp' => 'required|string|max:15',
             'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'price' => 'required',
         ]);
-    
+
         $format_file = $request->file('picture')->getClientOriginalName();
         $request->file('picture')->move(public_path('pictures'), $format_file);
-    
+
         Orderan::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -34,23 +36,24 @@ class OrderanController extends Controller
             'id_user' => Auth::id(),
             'id_barang' => $id_barang,
             'price' => $request->price,  // Tambahkan field price
+            'no_resi' => Str::random(10),
         ]);
-    
+
         return redirect()->back();
     }
-    
+
 
     public function cetakResi($id_orderan)
     {
         $orderan = Orderan::with('user', 'barang')->where('id_orderan', $id_orderan)->first();
         $data = [
-            'nama_penyewa' => $orderan->user->name,
-            'no_handphone' => $orderan->user->whatsapp,
+            'nama_pembeli' => $orderan->name,
+            'no_handphone' => $orderan->whatsapp,
             'barang' => $orderan->barang->name,
-            'alamat' => $orderan->user->address, // Assuming user has an address field
-            'jumlah_sewa' => $orderan->created_at,
-            'total_harga' => $orderan->barang->price, // Assuming barang has a price field
+            'tanggal_pembelian' => $orderan->created_at,
+            'harga' => $orderan->price, // Assuming barang has a price field
             'no_pesanan' => $orderan->id_orderan,
+            'no_resi' => $orderan->no_resi,
         ];
 
         $pdf = Pdf::loadView('resi', $data);
