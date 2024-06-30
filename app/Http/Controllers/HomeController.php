@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
-
+use App\Models\Orderan;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -58,7 +60,9 @@ class HomeController extends Controller
     }
     public function newproduk(){
         $barang = Barang::all();
-        return view('newproduk', ['barang' => $barang]);
+        $orderan = Orderan::all();
+        $user = User::all();
+        return view('newproduk', ['barang' => $barang, 'orderan' => $orderan, 'user' => $user]);
     }
     public function akun()
     {
@@ -67,5 +71,11 @@ class HomeController extends Controller
     public function descproduk()
     {
     return view('descproduk');
+    }
+    public function history()
+    {
+    $user = Auth::user();   
+    $orderan = Orderan::all();
+    return view('history',['orderan' => $orderan, 'user' => $user]);
     }
 } 

@@ -45,14 +45,15 @@
             <div class="card-actions justify-start">
               <button type="submit" class="btn btn-primary">Login</button>
             </div>
-            <div class="card-actions justify-end"></div>
-              <button type="submit" class="color-blue">Register</button>  
           </form>
+            <div class="card-actions justify-end">
+              <a href="/register"><button type="submit" class="text-blue">Register</button></a> </div> 
+          
         </div>
       </div>
-      <div class="border flex items-center justify-center bg-gradient-to-b from-blue-300 to-blue-500 p-4">
+      <div class="border flex items-center justify-center p-4">
         <figure>
-          <img src="{{ asset('image/Coffee.svg') }}" alt="Coffee"/>
+          <img src="{{ asset('image/Logo VoidCoffee.jpg') }}" alt="Coffee"/>
         </figure>
       </div>
     </div>

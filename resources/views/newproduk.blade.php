@@ -14,7 +14,7 @@
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="font-bold text-2xl mt-4">VoidCoffee</div>
+                    <div class="font-bold text-2xl mt-4 -translate-x-24">VoidCoffee</div>
                     <div class="hidden sm:ml-72 sm:block -translate-x-8">
                         <div class="flex space-x-12 mt-2">
                             <a href="/newberanda" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">Home</a>
@@ -25,13 +25,6 @@
                     </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 space-x-4">
-                    <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 transform transition-transform hover:scale-110">
-                        <span class="absolute -inset-1.5"></span>
-                        <span class="sr-only">View notifications</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-                        </svg>
-                    </button>
                     <!-- Profile dropdown -->
                     <div class="dropdown">
                         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -47,7 +40,7 @@
                                 </div>
                             </div>
                             <ul class="menu menu-sm p-2">
-                                <li class="mx-auto"><a href="#" class="text-white">Profile</a></li>
+                                <li class="mx-auto"><a href="/akun" class="text-white">Profile</a></li>
                                 <li class="mx-auto"><a href="/login" class="text-white">Logout</a></li>
                             </ul>
                         </div>
@@ -57,56 +50,70 @@
         </div>
     </nav>
 
-<div class="main-content container mx-auto p-4 flex flex-wrap justify-between">
-@foreach($barang as $brg)
-<div class="card w-96 bg-base-100 shadow-xl mb-5">
-  <figure class="px-10 pt-10">
-    <img src="{{ asset($brg->picture) }}" alt="" class="rounded-xl w-64 h-64" />
-  </figure>
-  <div class="card-body items-center text-center">
-    <h2 class="card-title">{{ $brg->name }}</h2>
-    <p>{{ $brg->description }}</p>
+    <div class="main-content container mx-auto p-4 flex flex-wrap justify-between">
+    @foreach($barang as $brg)
+        <div class="card w-96 bg-base-100 shadow-xl mb-5">
+            <figure class="px-10 pt-10">
+                <img src="{{ asset($brg->picture) }}" alt="" class="rounded-xl w-64 h-64" />
+            </figure>
+            <div class="card-body items-center text-center">
+                <h2 class="card-title">{{ $brg->name }}</h2>
+                <p>{{ $brg->description }}</p>
+                <button class="btn" onclick="document.getElementById('my_modal_create{{ $brg->id_barang }}').showModal()">Rp.{{ $brg->price }}</button>
+                <dialog id="my_modal_create{{ $brg->id_barang }}" class="modal modal-bottom sm:modal-middle">
+                    <div class="modal-box">
+                        <div class="w-36 h-36 mx-auto">
+                            <img src="/image/QR CODE VoidCoffee.jpg" alt="">
+                        </div>
+                        <h3 class="font-bold text-lg py-4">Please fill out the form below!</h3>
+                        <form action="{{ route('orderan.create', ['id_barang' => $brg->id_barang]) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('POST')
+                            <div>
+                                <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xs mb-5" name="name" value="{{ old('name') }}" />
+                                @error('name')
+                                    <div class="text-red-500">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Email" class="input input-bordered w-full max-w-xs mb-5" name="email" value="{{ old('email') }}" />
+                                @error('email')
+                                    <div class="text-red-500">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <input type="text" placeholder="No Whatsapp" class="input input-bordered w-full max-w-xs mb-5" name="whatsapp" value="{{ old('whatsapp') }}" />
+                                @error('whatsapp')
+                                    <div class="text-red-500">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Price" class="input input-bordered w-full max-w-xs mb-5" name="price" value="{{ $brg->price }}" disabled />
+                                @error('price')
+                                    <div class="text-red-500">{{ $message }}</div>
+                                @enderror
+                            </div>
+                                <input value="{{ $brg->id_barang }}" class="hidden" />
+                                @foreach($user as $usr)
+                                <input value="{{ $usr->id_user }}" class="hidden" />
+                                @endforeach
+                            <div>
+                                <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-5" name="picture"/>
+                                @error('picture')
+                                    <div class="text-red-500">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            
 
-    <button class="btn" onclick="document.getElementById('my_modal_create{{ $brg->id_barang }}').showModal()">Rp.{{ $brg->price }}</button>
-    <dialog id="my_modal_create{{ $brg->id_barang }}" class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-            <div class="w-36 h-36 mx-auto">
-                <img src="/image/QR CODE VoidCoffee.jpg" alt="">
+                        </form>
+                    </div>
+                </dialog>
             </div>
-            <h3 class="font-bold text-lg py-4">Please fill out the form below!</h3>
-            <form action="{{ route('orderan.create', ['id_barang' => $brg->id_barang]) }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div>
-                    <input type="text" placeholder="Name" class="input input-bordered w-full max-w-xs mb-5" name="name" value="{{ old('name') }}" />
-                    @error('name')
-                        <div class="text-red-500">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div>
-                    <input type="text" placeholder="Email" class="input input-bordered w-full max-w-xs mb-5" name="email" value="{{ old('email') }}" />
-                    @error('email')
-                        <div class="text-red-500">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div>
-                    <input type="text" placeholder="No Whatsapp" class="input input-bordered w-full max-w-xs mb-5" name="whatsapp" value="{{ old('whatsapp') }}" />
-                    @error('whatsapp')
-                        <div class="text-red-500">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div>
-                    <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-5" name="picture"/>
-                    @error('picture')
-                        <div class="text-red-500">{{ $message }}</div>
-                    @enderror
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
         </div>
-    </dialog>
-  </div>
+    @endforeach
 </div>
-@endforeach
+
 
 <footer class="footer bg-neutral text-neutral-content p-10">
         <aside>

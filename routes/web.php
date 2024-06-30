@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\SesiController;
-use App\Http\Controllers\OrderanController;
+use App\Http\Controllers\orderanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\KomentarController;
 
@@ -41,11 +41,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/newkontak', [SesiController::class, 'newkontak']);
     Route::get('/newlokasi', [SesiController::class, 'newlokasi']);
     Route::get('/newproduk', [HomeController::class, 'newproduk']);
+ 
     Route::post('/newproduk/{id_barang}', [OrderanController::class, 'create'])->name('orderan.create');
     
     Route::get('/akun', [SesiController::class, 'profile'])->name('profile');
 });
 
+Route::post('/history/{id_orderan}', [orderanController::class, 'cetakResi']);
+Route::get('/history', [HomeController::class, 'history']);
 
 Route::get('/descproduk', function () {
     return view('descproduk');

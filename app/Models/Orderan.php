@@ -18,13 +18,14 @@ class Orderan extends Model
         'email',
         'whatsapp',
         'picture',
+        'price',
 
     ];
-    public function user(): BelongsTo
+    public function user() 
     {
         return $this->belongsTo(User::class, 'id_user');
     }
-    public function barang(): BelongsTo
+    public function barang()
     {
         return $this->belongsTo(Barang::class, 'id_barang');
     }

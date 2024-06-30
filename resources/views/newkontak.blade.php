@@ -35,16 +35,23 @@
 
     <!-- Feature Section -->
     <section class="py-16 bg-gray-100">
-        <div class="container mx-auto flex flex-col md:flex-row items-center">
-            <img src="/image/kopi500.png" alt="Feature Coffee" class="w-full md:w-56 rounded">
-            <div class="md:ml-8 mt-8 md:mt-0">
-                <h2 class="text-3xl font-bold">Selamat datang di voidcoffee</h2>
-                <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies malesuada quam, sit amet ullamcorper mi. Integer sit amet consectetur eros. Phasellus in quam sed purus volutpat volutpat. In non tincidunt arcu. Nulla euismod, erat a lobortis suscipit, augue nisl lacinia erat, vitae consectetur urna elit id urna.</p>
-                <a href="#" class="mt-4 inline-block bg-green-500 text-white py-2 px-4 rounded">Read More</a>
-            </div>
+    <div class="container mx-auto flex flex-col md:flex-row items-center">
+        <img src="/image/kopi500.png" alt="Feature Coffee" class="w-full md:w-56 rounded">
+        <div class="md:ml-8 mt-8 md:mt-0">
+            <h2 class="text-3xl font-bold">Selamat datang di voidcoffee</h2>
+            <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies malesuada quam, sit amet ullamcorper mi. Integer sit amet consectetur eros. Phasellus in quam sed purus volutpat volutpat. In non tincidunt arcu. Nulla euismod, erat a lobortis suscipit, augue nisl lacinia erat, vitae consectetur urna elit id urna.</p>
+            <p id="additional-text" class="mt-4 hidden">Here is some additional hidden text that will be revealed when the Read More button is clicked.</p>
+            <button id="read-more-btn" class="mt-4 inline-block bg-green-500 text-white py-2 px-4 rounded">Read More</button>
         </div>
-    </section>
+    </div>
+</section>
 
+<script>
+    document.getElementById('read-more-btn').addEventListener('click', function() {
+        document.getElementById('additional-text').classList.remove('hidden');
+        this.classList.add('hidden');
+    });
+</script>
     <!-- Categories Section -->
     <section class="py-16">
         <div class="container mx-auto px-24">

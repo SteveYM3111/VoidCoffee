@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Orderan;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderanController extends Controller
 {
@@ -13,6 +13,7 @@ class OrderanController extends Controller
         $orderan = Orderan::all();
         return view('admin.orderan', ['orderan' => $orderan]);
     }
+
     public function create(Request $request, $id_barang)
     {
         $request->validate([
@@ -32,8 +33,27 @@ class OrderanController extends Controller
             'picture' => 'pictures/' . $format_file,
             'id_user' => Auth::id(),
             'id_barang' => $id_barang,
+            'price' => $request->price,  // Tambahkan field price
         ]);
     
         return redirect()->back();
+    }
+    
+
+    public function cetakResi($id_orderan)
+    {
+        $orderan = Orderan::with('user', 'barang')->where('id_orderan', $id_orderan)->first();
+        $data = [
+            'nama_penyewa' => $orderan->user->name,
+            'no_handphone' => $orderan->user->whatsapp,
+            'barang' => $orderan->barang->name,
+            'alamat' => $orderan->user->address, // Assuming user has an address field
+            'jumlah_sewa' => $orderan->created_at,
+            'total_harga' => $orderan->barang->price, // Assuming barang has a price field
+            'no_pesanan' => $orderan->id_orderan,
+        ];
+
+        $pdf = Pdf::loadView('resi', $data);
+        return $pdf->download('Resi.pdf');
     }
 }

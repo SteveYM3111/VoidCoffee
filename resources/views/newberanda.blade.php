@@ -7,8 +7,8 @@
       <h1>Welcome, {{ $user->name }}</h1>
         <p class="text-6xl font-bold">Void</p>
         <p class="text-6xl font-bold">Coffee</p>
-        <p class="text-xl mt-6">Lorem ipsum veret</p>
-        <p class="text-xl mt-6">Konsum Tolme mekgu</p>
+        <p class="text-xl mt-6">Destinasi Utama</p>
+        <p class="text-xl">Bagi Para Pecinta Kopi</p>
         <a href="/newproduk" class="mt-8 inline-block bg-green-500 text-white py-2 px-4 rounded">Shop Now</a>
 
       </div>

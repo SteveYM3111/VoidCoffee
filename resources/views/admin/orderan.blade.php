@@ -9,7 +9,8 @@
                 <th class="text-black">Foto</th>
                 <th class="text-black">Name</th>
                 <th class="text-black">Email</th>
-                <th class="text-black">Harga</th>
+                <!-- <th class="text-black">Harga</th> -->
+                <th class="text-black">Whatsapp</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
                 </td>
                 <td class="text-black">{{ $ord->name }}</td>
                 <td class="text-black">{{ $ord->email }}</td>
+                <!-- <td class="text-black">{{ $ord->harga }}</td> -->
                 <td class="text-black">{{ $ord->whatsapp }}</td>
             </tr>
             @endforeach

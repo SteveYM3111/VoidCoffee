@@ -10,9 +10,10 @@ class BarangController extends Controller
 {
     public function Barang(){
         $barang = Barang::all();
+
         return view('admin/Barang', [
-            'barang' => $barang
-        ]);
+            'barang' => $barang,
+            ]);
     }
 
     public function create(Request $request){

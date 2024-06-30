@@ -16,10 +16,10 @@
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="flex flex-shrink-0 items-center">
-                        <img class="h-8 w-8" src="/image/biji.png" alt="Your Company">
+                    <div class="flex mt-4 text-white text-2xl font-mono -translate-x-32">
+                        VoidCoffee
                     </div>
-                    <div class="hidden sm:ml-96 sm:block -translate-x-8">
+                    <div class="hidden sm:ml-80 sm:block -translate-x-24">
                         <div class="flex space-x-12 mt-4">
                             <a href="/login" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">Home</a>
                             <a href="/login" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform transition-transform hover:scale-110">About Us</a>
@@ -29,16 +29,9 @@
                     </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 space-x-4">
-                    <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 transform transition-transform hover:scale-110">
-                        <span class="absolute -inset-1.5"></span>
-                        <span class="sr-only">View notifications</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-                        </svg>
-                    </button>
                     <!-- Profile dropdown -->
                     <div class="dropdown">
-                        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar mt-2">
                             <div class="w-10 rounded-full transform transition-transform hover:scale-110">
                                 <img alt="Profile" src="/image/gojoadmin.png"/>
                             </div>
@@ -60,7 +53,16 @@
             </div>
         </div>
     </nav>
-    @yield('content')
+    <div class="flex flex-col items-center justify-center text-3xl text-white mx-auto text-center mt-64">
+        Welcome to our Website!
+    </div>
+    <div class="flex flex-col items-center justify-center text-3xl text-white mx-auto text-center mt-4">
+        To gain acceess to our website please Log in first
+    </div>
+    <div class="flex flex-col items-center justify-center text-3xl text-white mx-auto text-center mt-4">
+        or register if you dont have an account. Thank you!
+    </div>
+    <div class="flex flex-col items-center justify-center text-3xl text-white mx-auto text-center mt-4"><a href="/login" class="btn btn-primary">Log in</a></div>
 </body>
 
 </html>
